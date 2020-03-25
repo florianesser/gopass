@@ -114,7 +114,7 @@ func (s *Store) List(ctx context.Context, prefix string) ([]string, error) {
 		if !strings.HasPrefix(name, prefix) {
 			return nil
 		}
-		files = append(files, name)
+		files = append(files, strings.ReplaceAll(name, "\\", "/"))
 		return nil
 	}); err != nil {
 		return nil, err
